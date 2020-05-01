@@ -1,0 +1,6 @@
+nodejs:
+  applicationPort: 3000
+  aadIdentityName: incident
+  ingressHost: incident-response.{{ .Values.global.environment }}.platform.hmcts.net
+  environment:
+    image: 'hmctspublic.azurecr.io/incident/response:latest'
