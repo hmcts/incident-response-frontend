@@ -1,0 +1,110 @@
+{% extends "template.njk" %}
+
+{% block pageTitle %}
+Incident {{ incident.id }} - HMCTS
+{% endblock %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "macros/timeline/macro.njk" import hmctsTimeline %}
+
+{% block content %}
+  {% if incident.report_only %}
+  <span class="govuk-caption-xl">Report only</span>
+  {% else %}
+  {% if incident.is_closed %}
+  <span class="govuk-caption-xl">Closed</span>
+  {% else %}
+  <span class="govuk-caption-xl">LIVE</span>
+  {% endif %}
+  {% endif %}
+  <h1 class="govuk-heading-xl">Incident {{ incident.id }}</h1>
+
+
+  <h2 class="govuk-heading-l">Summary</h2>
+  <p class="govuk-body">{{ incident.summary }}</p>
+
+{% if incident.comms_channel %}
+  {% set commsLinkDest = 'https://platformengin-tzf2541.slack.com/archives/' + incident.comms_channel.channel_id %}
+  {% set commsLink = '<a href="' + commsLinkDest + '">#' + incident.comms_channel.channel_name + '</a>' %}
+{% else %}
+  {% set commsLink = '' %}
+{% endif %}
+
+{% if incident.lead %}
+  {% set incidentLead = incident.lead.full_name %}
+{% else %}
+{% set incidentLead = '' %}
+{% endif %}
+
+{% if incident.is_closed %}
+<p class="govuk-heading-m">Closed</p>
+<p class="govuk-body">{{ incident.end_time | date }}</p>
+{% endif %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Severity"
+      },
+      value: {
+        text: incident.severity
+      }
+    },
+    {
+      key: {
+        text: "Impact"
+      },
+      value: {
+        text: incident.impact
+      }
+    },
+    {
+      key: {
+        text: "Reporter"
+      },
+      value: {
+        text: incident.reporter.full_name
+      }
+    },
+    {
+      key: {
+        text: "Lead"
+      },
+      value: {
+        text: incidentLead
+      }
+    },
+    {
+      key: {
+        text: "Start time"
+      },
+      value: {
+        text: incident.start_time | date
+      }
+    },
+    {
+      key: {
+        text: "Report time"
+      },
+      value: {
+        text: incident.report_time | date
+      }
+    },
+    {
+      key: {
+        text: "Incident channel"
+      },
+      value: {
+        html: commsLink
+      }
+    }
+  ]
+})
+}}
+
+<h2 class="govuk-heading-m">Timeline</h2>
+
+{{ hmctsTimeline({ events: timeline }) }}
+
+{% endblock %}

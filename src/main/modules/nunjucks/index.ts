@@ -2,6 +2,8 @@ import * as path from 'path';
 import * as express from 'express';
 import * as nunjucks from 'nunjucks';
 
+import { date } from './filters/date';
+
 export class Nunjucks {
   constructor(public developmentMode: boolean) {
     this.developmentMode = developmentMode;
@@ -18,7 +20,7 @@ export class Nunjucks {
       'node_modules',
       'govuk-frontend',
     );
-    nunjucks.configure(
+    const nunjucksEnv = nunjucks.configure(
       [path.join(__dirname, '..', '..', 'views'), govUkFrontendPath],
       {
         autoescape: true,
@@ -26,6 +28,8 @@ export class Nunjucks {
         express: app,
       },
     );
+
+    nunjucksEnv.addFilter('date', date);
 
     app.use((req, res, next) => {
       res.locals.pagePath = req.path;

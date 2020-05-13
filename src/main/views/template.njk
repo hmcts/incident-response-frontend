@@ -1,7 +1,17 @@
 {% extends "govuk/template.njk" %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
 
 {% block head %}
   {% include "webpack/css.njk" %}
+{% endblock %}
+
+{% block header %}
+{{ govukHeader({
+  homepageUrl: "#",
+  serviceName: "HMCTS Incidents",
+  serviceUrl: "#"
+}) }}
+
 {% endblock %}
 
 {% block bodyEnd %}
