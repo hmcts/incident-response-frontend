@@ -1,0 +1,15 @@
+version: 1.0-preview-1
+steps:
+
+  - id: build
+    build: >
+      -t {{.Run.Registry}}/rpe/response-frontend:latest -t {{.Run.Registry}}/rpe/response-frontend:{{.Run.ID}}
+      .
+    keep: true
+
+  - id: push
+    push:
+      - "{{.Run.Registry}}/rpe/response-frontend:{{.Run.ID}}"
+      - "{{.Run.Registry}}/rpe/response-frontend:latest"
+    when:
+      - build

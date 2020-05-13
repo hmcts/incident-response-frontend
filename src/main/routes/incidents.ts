@@ -4,8 +4,10 @@ const got = require('got');
 
 const router = express.Router();
 
+const responseUrl = process.env.RESPONSE_URL || 'http://localhost:8000';
+
 const client = got.extend({
-  prefixUrl: 'http://localhost:8000/core/incidents',
+  prefixUrl: `${responseUrl}/core/incidents`,
   headers: {
     Accept: 'application/json',
   },
