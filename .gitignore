@@ -13,7 +13,8 @@ node_modules/
 src/main/public/img/lib/*
 src/main/public/js/lib/**/*.js
 src/main/public/stylesheets/lib/*
-src/main/views/webpack/
+src/main/views/webpack/css.njk
+src/main/views/webpack/js.njk
 
 node-rpm-packaging/
 mochawesome-report/
