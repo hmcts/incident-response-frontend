@@ -24,7 +24,7 @@ Incident {{ incident.id }} - HMCTS
   <p class="govuk-body">{{ incident.summary }}</p>
 
 {% if incident.comms_channel %}
-  {% set commsLinkDest = 'https://platformengin-tzf2541.slack.com/archives/' + incident.comms_channel.channel_id %}
+  {% set commsLinkDest = 'https://hmcts-reform.slack.com/archives/' + incident.comms_channel.channel_id %}
   {% set commsLink = '<a href="' + commsLinkDest + '">#' + incident.comms_channel.channel_name + '</a>' %}
 {% else %}
   {% set commsLink = '' %}
