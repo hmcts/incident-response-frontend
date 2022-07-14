@@ -6,6 +6,8 @@ const pa11y = require('pa11y');
 
 const agent = supertest.agent(app);
 
+jest.setTimeout(10000);
+
 class Pa11yResult {
   documentTitle: string;
   pageUrl: string;
