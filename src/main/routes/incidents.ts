@@ -18,6 +18,33 @@ const client = got.extend({
   responseType: 'json',
 });
 
+type SlackAuthor = {
+  app_id: string; // always 'slack'
+  external_id: string;
+  display_name: string;
+  full_name: string;
+  email: string;
+};
+
+type TimelineMetadata = {
+  author: SlackAuthor;
+  message_ts: string;
+  channel_id: string;
+};
+
+type TimelineEvent = {
+  id: number;
+  timestamp: string;
+  text: string;
+  event_type: string;
+  metadata: TimelineMetadata;
+  text_ui: string;
+};
+
+function compareTimelineEvents(a: TimelineEvent, b: TimelineEvent) {
+  return a.timestamp > b.timestamp ? -1 : 1;
+}
+
 /* GET home page. */
 router.get('/incident/:id', async (req, res, next) => {
   try {
@@ -31,10 +58,9 @@ router.get('/incident/:id', async (req, res, next) => {
 
     const uiTimeline = timeline.body.results
       // skipping incident_lead promotion for now
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .filter((entry: any) => entry.event_type !== 'incident_update')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .map((entry: any) => {
+      .filter((entry: TimelineEvent) => entry.event_type !== 'incident_update')
+      .sort(compareTimelineEvents)
+      .map((entry: TimelineEvent) => {
         return {
           title: { text: date(entry.timestamp) },
           by: entry.metadata.author.full_name,
