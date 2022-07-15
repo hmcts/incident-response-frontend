@@ -1,5 +1,6 @@
 import * as express from 'express';
 
+import { unslackify } from '../incidents/unslackify';
 import { date } from '../modules/nunjucks/filters/date';
 
 const { Logger } = require('@hmcts/nodejs-logging');
@@ -56,17 +57,21 @@ router.get('/incident/:id', async (req, res, next) => {
 
     const timeline = await client.get(`${req.params.id}/timeline/events`);
 
-    const uiTimeline = timeline.body.results
-      // skipping incident_lead promotion for now
-      .filter((entry: TimelineEvent) => entry.event_type !== 'incident_update')
-      .sort(compareTimelineEvents)
-      .map((entry: TimelineEvent) => {
-        return {
-          title: { text: date(entry.timestamp) },
-          by: entry.metadata.author.full_name,
-          description: { text: entry.text_ui },
-        };
-      });
+    const uiTimeline = await Promise.all(
+      timeline.body.results
+        // skipping incident_lead promotion for now
+        .filter((entry: TimelineEvent) => entry.event_type !== 'incident_update')
+        .sort(compareTimelineEvents)
+        .map(async (entry: TimelineEvent) => {
+          const description = await unslackify(entry.text_ui);
+
+          return {
+            title: { text: date(entry.timestamp) },
+            by: entry.metadata.author.full_name,
+            description: { text: description },
+          };
+        })
+    );
 
     res.render('incident', { incident: response.body, timeline: uiTimeline });
   } catch (err) {

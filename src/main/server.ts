@@ -3,6 +3,11 @@ import * as fs from 'fs';
 import * as https from 'https';
 import * as path from 'path';
 
+import * as propertiesVolume from '@hmcts/properties-volume';
+import * as config from 'config';
+
+propertiesVolume.addTo(config);
+
 import { app } from './app';
 
 const { Logger } = require('@hmcts/nodejs-logging');

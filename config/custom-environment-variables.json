@@ -1,0 +1,8 @@
+{
+  "secrets": {
+    "response": {
+      "slack-bot-token": "SLACK_BOT_TOKEN",
+      "slack-signing-secret": "SLACK_SIGNING_SECRET"
+    }
+  }
+}

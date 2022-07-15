@@ -1,4 +1,5 @@
 import * as supertest from 'supertest';
+import '../mocks/slack';
 
 import { app } from '../../main/app';
 
