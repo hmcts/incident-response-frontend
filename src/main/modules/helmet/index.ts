@@ -1,5 +1,5 @@
 import * as express from 'express';
-import helmet = require('helmet');
+import helmet from 'helmet';
 
 export interface HelmetConfig {
   referrerPolicy: string;
@@ -24,6 +24,7 @@ export class Helmet {
 
   private setContentSecurityPolicy(app: express.Express): void {
     app.use(
+      // eslint-disable-next-line import/no-named-as-default-member
       helmet.contentSecurityPolicy({
         directives: {
           connectSrc: [self],
@@ -34,7 +35,7 @@ export class Helmet {
           scriptSrc: [self, googleAnalyticsDomain, "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='"],
           styleSrc: [self],
         },
-      }),
+      })
     );
   }
 
@@ -43,6 +44,7 @@ export class Helmet {
       throw new Error('Referrer policy configuration is required');
     }
 
+    // eslint-disable-next-line import/no-named-as-default-member
     app.use(helmet.referrerPolicy({ policy }));
   }
 }

@@ -1,15 +1,12 @@
-/* ==========================================================================
-   #TIMELINE
-   ========================================================================== */
-
+// sass-lint:disable class-name-format
 .hmcts-timeline {
   margin-bottom: govuk-spacing(4);
   overflow: hidden;
   position: relative;
 
-  &:before {
-    background-color: govuk-colour("blue");
-    content: "";
+  &::before {
+    background-color: govuk-colour('blue');
+    content: '';
     height: 100%;
     left: 0;
     position: absolute;
@@ -20,7 +17,8 @@
 
 .hmcts-timeline--full {
   margin-bottom: 0;
-  &:before {
+
+  &::before {
     height: calc(100% - 75px);
   }
 }
@@ -30,9 +28,9 @@
   padding-left: govuk-spacing(4);
   position: relative;
 
-  &:before {
-    background-color: govuk-colour("blue");
-    content: "";
+  &::before {
+    background-color: govuk-colour('blue');
+    content: '';
     height: 5px;
     left: 0;
     position: absolute;
@@ -55,8 +53,8 @@
 
 .hmcts-timeline__date {
   @include govuk-font($size: 16);
-  margin-top: govuk-spacing(1);
   margin-bottom: 0;
+  margin-top: govuk-spacing(1);
 }
 
 .hmcts-timeline__description {
