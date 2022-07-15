@@ -1,1 +1,8 @@
-{}
+{
+  "secrets": {
+    "response": {
+      "slack-signing-secret": "ABCD",
+      "slack-bot-token": "aabasdsa"
+    }
+  }
+}
