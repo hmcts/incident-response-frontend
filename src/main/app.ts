@@ -11,7 +11,7 @@ import { Helmet } from './modules/helmet';
 import { Nunjucks } from './modules/nunjucks';
 import { RouterFinder } from './router/routerFinder';
 
-const { Express, Logger } = require('@hmcts/nodejs-logging');
+const { Logger } = require('@hmcts/nodejs-logging');
 
 const { setupDev } = require('./development');
 
@@ -20,9 +20,6 @@ const developmentMode = env === 'development';
 
 export const app = express();
 app.locals.ENV = env;
-
-// setup logging of HTTP requests
-app.use(Express.accessLogger());
 
 const logger = Logger.getLogger('app');
 
