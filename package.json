@@ -20,7 +20,7 @@
   "dependencies": {
     "@hmcts/info-provider": "^1.0.0",
     "@hmcts/nodejs-healthcheck": "^1.7.1",
-    "@hmcts/nodejs-logging": "^4.0.2",
+    "@hmcts/nodejs-logging": "4.0.4",
     "@hmcts/properties-volume": "^0.0.14",
     "@slack/bolt": "^3.12.0",
     "@types/config": "^0.0.41",
