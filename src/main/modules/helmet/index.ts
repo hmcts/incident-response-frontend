@@ -23,6 +23,12 @@ export class Helmet {
   }
 
   private setContentSecurityPolicy(app: express.Express): void {
+    const scriptSrc = [self, googleAnalyticsDomain, "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='"];
+
+    if (process.env.DEV_MODE === 'true') {
+      scriptSrc.push("'unsafe-eval'");
+    }
+
     app.use(
       // eslint-disable-next-line import/no-named-as-default-member
       helmet.contentSecurityPolicy({
@@ -32,7 +38,7 @@ export class Helmet {
           fontSrc: [self, 'data:'],
           imgSrc: [self, googleAnalyticsDomain],
           objectSrc: [self],
-          scriptSrc: [self, googleAnalyticsDomain, "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='"],
+          scriptSrc,
           styleSrc: [self],
         },
       })
