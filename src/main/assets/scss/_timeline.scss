@@ -5,8 +5,8 @@
   position: relative;
 
   &::before {
-    background-color: govuk-colour('blue');
-    content: '';
+    background-color: govuk-colour("blue");
+    content: "";
     height: 100%;
     left: 0;
     position: absolute;
@@ -29,8 +29,8 @@
   position: relative;
 
   &::before {
-    background-color: govuk-colour('blue');
-    content: '';
+    background-color: govuk-colour("blue");
+    content: "";
     height: 5px;
     left: 0;
     position: absolute;
@@ -41,11 +41,13 @@
 
 .hmcts-timeline__title {
   @include govuk-font($size: 19, $weight: bold);
+
   display: inline;
 }
 
 .hmcts-timeline__by {
   @include govuk-font($size: 19);
+
   color: $govuk-secondary-text-colour;
   display: inline;
   margin: 0;
@@ -53,12 +55,14 @@
 
 .hmcts-timeline__date {
   @include govuk-font($size: 16);
+
   margin-bottom: 0;
   margin-top: govuk-spacing(1);
 }
 
 .hmcts-timeline__description {
   @include govuk-font($size: 16);
+
   margin-top: govuk-spacing(4);
 }
 
