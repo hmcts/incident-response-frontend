@@ -68,7 +68,7 @@ router.get('/incident/:id', async (req, res, next) => {
           return {
             title: { text: date(entry.timestamp) },
             by: entry.metadata.author.full_name,
-            description: { html: `<p class="hmcts-timeline__description">${description}</p>` },
+            description: { html: `<div class="hmcts-timeline__description">${description}</div>` },
           };
         })
     );

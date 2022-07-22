@@ -116,7 +116,7 @@ function codeBlock(text: string) {
   const regex = /```([^`]+)```/g;
 
   return modifyText(regex, text, matches => {
-    return `<code><pre>${matches[0]}</pre></code>`;
+    return `<pre><code>${matches[0]}</code></pre>`;
   });
 }
 
