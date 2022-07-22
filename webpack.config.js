@@ -18,7 +18,10 @@ module.exports = {
       ...scss.rules,
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        loader: 'ts-loader',
+        options: {
+          configFile: 'tsconfig.webpack.json',
+        },
         exclude: /node_modules/,
       },
     ],
