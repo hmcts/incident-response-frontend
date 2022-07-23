@@ -43,7 +43,7 @@
     "express-nunjucks": "2.2.5",
     "got": "11.8.5",
     "govuk-frontend": "4.2.0",
-    "helmet": "5.1.0",
+    "helmet": "5.1.1",
     "jquery": "3.6.0",
     "node-cache": "5.1.2",
     "nunjucks": "3.2.3",
