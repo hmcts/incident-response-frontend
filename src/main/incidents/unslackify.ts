@@ -58,30 +58,34 @@ export function userReferenceToId(text: string): string {
 }
 
 function italics(text: string) {
-  const regex = /(?:^_| _|\r\n_|\r_|\n_)(.+)_/g;
-  return modifyText(regex, text, matches => {
-    return `<span class="hmcts-!-font-style-italic">${matches[0]}</span>`;
+  const regex = /(?:^_| _|\r\n_|\r_|\n_)([^_]+)_/g;
+  return modifyText(regex, text, (original, matches) => {
+    return `${addNewLineIfNeeded(original)}<span class="hmcts-!-font-style-italic">${matches[0]}</span>`;
   });
+}
+
+function addNewLineIfNeeded(original: string) {
+  return original.startsWith('\n') ? '\n' : '';
 }
 
 function bold(text: string) {
   const regex = /(?:^\*| \*|\r\n\*|\r\*|\n\*)(.+)\*/g;
-  return modifyText(regex, text, matches => {
-    return `<span class="govuk-!-font-weight-bold">${matches[0]}</span>`;
+  return modifyText(regex, text, (original, matches) => {
+    return `${addNewLineIfNeeded(original)}<span class="govuk-!-font-weight-bold">${matches[0]}</span>`;
   });
 }
 
 function linkWithText(text: string) {
   const regex = /&lt;(https?:\/\/.+)\|(.+)&gt;/g;
-  return modifyText(regex, text, matches => {
-    return `<a class="govuk-link" href="${matches[0]}">${matches[1]}</a>`;
+  return modifyText(regex, text, (original, matches) => {
+    return `${addNewLineIfNeeded(original)}<a class="govuk-link" href="${matches[0]}">${matches[1]}</a>`;
   });
 }
 
 function plainLink(text: string) {
   const regex = /&lt;(https?:\/\/.+)&gt;/g;
-  return modifyText(regex, text, matches => {
-    return `<a class="govuk-link" href="${matches[0]}">${matches[0]}</a>`;
+  return modifyText(regex, text, (original, matches) => {
+    return `${addNewLineIfNeeded(original)}<a class="govuk-link" href="${matches[0]}">${matches[0]}</a>`;
   });
 }
 
@@ -100,32 +104,32 @@ async function userIdToDisplayNameConversion(text: string) {
 
 function strikethrough(text: string) {
   const regex = /(?:^~| ~|\r\n~|\r~|\n~)(.+)~/g;
-  return modifyText(regex, text, matches => {
-    return `<span class="hmcts-!-text-decoration-line-through">${matches[0]}</span>`;
+  return modifyText(regex, text, (original, matches) => {
+    return `${addNewLineIfNeeded(original)}<span class="hmcts-!-text-decoration-line-through">${matches[0]}</span>`;
   });
 }
 
 function inlineCode(text: string) {
   const regex = /`([^`]+)`/g;
-  return modifyText(regex, text, matches => {
-    return `<code>${matches[0]}</code>`;
+  return modifyText(regex, text, (original, matches) => {
+    return `${addNewLineIfNeeded(original)}<code>${matches[0]}</code>`;
   });
 }
 
 function codeBlock(text: string) {
   const regex = /```([^`]+)```/g;
 
-  return modifyText(regex, text, matches => {
-    return `<pre><code>${matches[0]}</code></pre>`;
+  return modifyText(regex, text, (original, matches) => {
+    return `${addNewLineIfNeeded(original)}<pre><code>${matches[0]}</code></pre>`;
   });
 }
 
-function modifyText(regex: RegExp, text: string, replacementText: (matches: string[]) => string) {
+function modifyText(regex: RegExp, text: string, replacementText: (original: string, matches: string[]) => string) {
   const matches = matchRegex(regex, text);
 
   let modifiedText = text;
   matches.forEach(theMatch => {
-    modifiedText = modifiedText.replace(theMatch.original, replacementText(theMatch.matches));
+    modifiedText = modifiedText.replace(theMatch.original, replacementText(theMatch.original, theMatch.matches));
   });
   return modifiedText;
 }
@@ -163,7 +167,7 @@ async function modifyTextAsync(
 function blockquote(text: string) {
   // blockquote must be at the start of a line, given we don't do line by line searching, we try to find the start
   const regex = /(?:\r\n|\r|\n)&gt; (.+)/g;
-  return modifyText(regex, text, matches => {
+  return modifyText(regex, text, (original, matches) => {
     return `<blockquote>${matches[0]}</blockquote>`;
   });
 }
