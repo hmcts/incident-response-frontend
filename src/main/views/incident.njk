@@ -25,7 +25,7 @@ Incident {{ incident.id }} | HMCTS
 
 {% if incident.comms_channel %}
   {% set commsLinkDest = 'https://hmcts-reform.slack.com/archives/' + incident.comms_channel.channel_id %}
-  {% set commsLink = '<a href="' + commsLinkDest + '">#' + incident.comms_channel.channel_name + '</a>' %}
+  {% set commsLink = '<a href="' + commsLinkDest + '" target="_blank" ref="noopener noreferrer nofollow">#' + incident.comms_channel.channel_name + '</a>' %}
 {% else %}
   {% set commsLink = '' %}
 {% endif %}

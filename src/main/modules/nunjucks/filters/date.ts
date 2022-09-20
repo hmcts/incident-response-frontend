@@ -1,8 +1,6 @@
-import { format, toDate } from 'date-fns-tz';
-
-const timeZone = 'Europe/London';
+import { formatInTimeZone, toDate } from 'date-fns-tz';
 
 export function date(value: string): string {
   const parsedDate = toDate(value, { timeZone: 'UTC' });
-  return format(parsedDate, 'MMM d, yyyy, h:mm a', { timeZone });
+  return formatInTimeZone(parsedDate, 'Europe/London', 'MMM d, yyyy, h:mm a');
 }
