@@ -1,9 +1,9 @@
 nodejs:
   applicationPort: 3000
   aadIdentityName: response
+  image: 'hmctspublic.azurecr.io/incident/response:latest'
   ingressHost: response.platform.hmcts.net
   environment:
-    image: 'hmctspublic.azurecr.io/incident/response:latest'
   keyVaults:
     response:
       secrets:
