@@ -75,7 +75,9 @@ router.get('/incident/:id', async (req, res, next) => {
 
     res.render('incident', { incident: response.body, timeline: uiTimeline });
   } catch (err) {
-    logger.error(err);
+    if (err?.response?.statusCode !== 404) {
+      logger.error(err);
+    }
     next(err);
   }
 });

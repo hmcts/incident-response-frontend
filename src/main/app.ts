@@ -4,9 +4,9 @@ import * as bodyParser from 'body-parser';
 import config = require('config');
 import cookieParser from 'cookie-parser';
 import express from 'express';
+import { RequestError } from 'got';
 import favicon from 'serve-favicon';
 
-import { HTTPError } from './HttpError';
 import { Helmet } from './modules/helmet';
 import { Nunjucks } from './modules/nunjucks';
 import { RouterFinder } from './router/routerFinder';
@@ -45,12 +45,21 @@ app.use((req, res) => {
 });
 
 // error handler
-app.use((err: HTTPError, req: express.Request, res: express.Response) => {
+app.use((err: RequestError, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+
   logger.error(`${err.stack || err}`);
 
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = env === 'development' ? err : {};
-  res.status(err.status || 500);
+
+  const errorNumber = err?.response?.statusCode || 500;
+  res.status(errorNumber);
+  if (errorNumber === 404) {
+    return res.render('not-found');
+  }
   res.render('error');
 });
