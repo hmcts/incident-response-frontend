@@ -1204,10 +1204,10 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/require-directory@2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@types/require-directory/-/require-directory-2.1.2.tgz#c2b405cce36d81946ad1a24580c3821880973d15"
-  integrity sha512-FUG5PJ2rsV2TssSspVZefTR8+wH3Ahr6KdAB6WanLNroSDu0A5ew4WVUxnnGU/E1k6nzip9ZawGAAe/ZqzGn5g==
+"@types/require-directory@2.1.6":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@types/require-directory/-/require-directory-2.1.6.tgz#2ca8e2efd84dc9802d8f42c2630bf5f0718c8cdc"
+  integrity sha512-b+IXLaj2/pjPLBi7z/0Y5rSWAwn73w4u0Om7dHl0z2RL+ZNOeIfosrGd/bLEeUpcSSuUzOXgF1RrshzLEx9+7Q==
   dependencies:
     "@types/node" "*"
 

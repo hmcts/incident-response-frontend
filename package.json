@@ -32,7 +32,7 @@
     "@types/helmet": "4.0.0",
     "@types/node": "18.0.3",
     "@types/nunjucks": "3.2.2",
-    "@types/require-directory": "2.1.2",
+    "@types/require-directory": "2.1.6",
     "@types/serve-favicon": "2.5.3",
     "config": "3.3.7",
     "cookie-parser": "1.4.6",
