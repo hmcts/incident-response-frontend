@@ -1228,10 +1228,10 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.13.tgz#da4bfd73f49bd541d28920ab0e2bf0ee80f71c91"
   integrity sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==
 
-"@types/serve-favicon@2.5.3":
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/@types/serve-favicon/-/serve-favicon-2.5.3.tgz#6380c875059711090631abea8f3edc5906cccd32"
-  integrity sha512-HirXLRJjLXzwiSnjhE1vMu55X7+qaY+noXsKqi/7eK1uByl3L6TwkcALZuJnQXqOalMdmBz3b662yXvaR+89Vw==
+"@types/serve-favicon@2.5.7":
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/@types/serve-favicon/-/serve-favicon-2.5.7.tgz#a556fe9016984341a43af5b8345e274f3887f5ac"
+  integrity sha512-z9TNUQXdQ+W/OJMP1e3KOYUZ99qJS4+ZfFOIrPGImcayqKoyifbJSEFkVq1MCKBbqjMZpjPj3B5ilrQAR2+TOw==
   dependencies:
     "@types/express" "*"
 
@@ -1256,10 +1256,10 @@
     "@types/cookiejar" "*"
     "@types/node" "*"
 
-"@types/supertest@2.0.12":
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/@types/supertest/-/supertest-2.0.12.tgz#ddb4a0568597c9aadff8dbec5b2e8fddbe8692fc"
-  integrity sha512-X3HPWTwXRerBZS7Mo1k6vMVR1Z6zmJcDVn5O/31whe0tnjE4te6ZJSJGq1RiqHPjzPdMTfjCFogDJmwng9xHaQ==
+"@types/supertest@2.0.16":
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/@types/supertest/-/supertest-2.0.16.tgz#7a1294edebecb960d957bbe9b26002a2b7f21cd7"
+  integrity sha512-6c2ogktZ06tr2ENoZivgm7YnprnhYE4ZoXGMY+oA7IuAf17M8FWvujXZGmxLv8y0PTyts4x5A+erSwVUFA8XSg==
   dependencies:
     "@types/superagent" "*"
 
@@ -2709,10 +2709,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-date-fns-tz@1.3.6:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.3.6.tgz#4195a58a2f86eda55ea69fb477f3ed8a6e2188ac"
-  integrity sha512-C8q7mErvG4INw1ZwAFmPlGjEo5Sv4udjKVbTc03zpP9cu6cp5AemFzKhz0V68LGcWEtX5mJudzzg3G04emIxLA==
+date-fns-tz@1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.3.8.tgz#083e3a4e1f19b7857fa0c18deea6c2bc46ded7b9"
+  integrity sha512-qwNXUFtMHTTU6CFSFjoJ80W8Fzzp24LntbjFFBgL/faqds4e5mo9mftoRLgr3Vi1trISsg4awSpYVsOQCRnapQ==
 
 date-fns@2.29.0:
   version "2.29.0"
