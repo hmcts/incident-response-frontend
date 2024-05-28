@@ -44,7 +44,7 @@
     "got": "11.8.6",
     "govuk-frontend": "4.2.0",
     "helmet": "5.1.0",
-    "jquery": "3.6.0",
+    "jquery": "3.7.1",
     "node-cache": "5.1.2",
     "nunjucks": "3.2.4",
     "require-directory": "2.1.1",
