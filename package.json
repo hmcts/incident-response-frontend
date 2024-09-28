@@ -23,7 +23,7 @@
     "@hmcts/nodejs-healthcheck": "1.7.3",
     "@hmcts/nodejs-logging": "4.0.4",
     "@hmcts/properties-volume": "0.0.14",
-    "@slack/bolt": "3.13.1",
+    "@slack/bolt": "3.22.0",
     "@types/config": "0.0.41",
     "@types/cookie-parser": "1.4.7",
     "@types/csurf": "1.11.5",
